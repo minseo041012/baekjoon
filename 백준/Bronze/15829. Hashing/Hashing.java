@@ -11,7 +11,8 @@ public class Main{
 
         HashMap<String, Integer> map = new HashMap<>();
         String[] str = new String[length];
-        int result = 0;
+        long result = 0;
+        int Mod = 1234567891;
 
         for(int i = 0; i < 26; i++){
             char temp = (char)('a' + i);
@@ -22,10 +23,13 @@ public class Main{
         for(int i = 0; i < length; i++){
             str[i] = s.substring(i, i + 1);
         }
-        //배열의 각 인덱스에 부여한 값 * 특정한 수(문제에서 31 제공)
+        //배열의 각 인덱스에 부여한 값 * 특정한 수(문제에서 제공) % Mod(문제에서 제공)
+        //(A*B) mod C = ((A mod C) * (B mod C)) mod C
+        long power = 1;
         for(int i = 0; i < length; i++){
             int a = map.get(str[i]);
-            result += a * (int)Math.pow(31, i);
+            result = (result + a * power) % Mod;
+            power = (power * 31) % Mod;
         }
 
         bw.write(String.valueOf(result));
