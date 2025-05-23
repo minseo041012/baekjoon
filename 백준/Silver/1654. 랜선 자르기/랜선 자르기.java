@@ -17,7 +17,7 @@ public class Main{
             arr[i] = Integer.parseInt(br.readLine());
         }
         Arrays.sort(arr);
-        //n이 1일 경우 배열 0번째 인덱스 출력 
+        //n이 1일 경우, 배열에 들어간 숫자가 전부 같으면서 k와 n도 같을 경우
         if(n == 1|| (arr[0] == arr[arr.length - 1] && k > 1 & k == n))
             bw.write(String.valueOf(arr[0]));
         else {
