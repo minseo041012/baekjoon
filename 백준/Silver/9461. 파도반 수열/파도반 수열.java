@@ -11,6 +11,8 @@ public class Main{
         edge[1] = 1;
         edge[2] = 1;
         edge[3] = 1;
+        //p[n] = p[n - 2] + p[n - 3] 이 공식을 사용
+        //dp를 이용해서 edge 배열에 담고 꺼내 쓰는 방식으로 문제 해결
         for(int j = 4; j <= 100; j++)
             edge[j] = edge[j - 2] + edge[j - 3];
 
