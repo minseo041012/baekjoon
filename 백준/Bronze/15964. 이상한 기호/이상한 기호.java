@@ -7,10 +7,10 @@ public class Main{
       BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
       StringTokenizer st = new StringTokenizer(br.readLine());
       
-      int n = Integer.parseInt(st.nextToken());
-      int m = Integer.parseInt(st.nextToken());
+      long n = Integer.parseInt(st.nextToken());
+      long m = Integer.parseInt(st.nextToken());
       
-        int result = (n+m) * (n-m);
+        long result = (n+m) * (n-m);
         bw.write(String.valueOf(result));
       bw.flush();
       bw.close();
