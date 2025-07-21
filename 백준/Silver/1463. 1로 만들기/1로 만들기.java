@@ -7,7 +7,7 @@ public class Main {
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
         int n = Integer.parseInt(br.readLine());
-        int[] overlap = new int[n + 4];
+        int[] overlap = new int[n + 4];//dp를 이용. 저장할 배열
         int temp;
 
         overlap[1] = 0;
@@ -15,6 +15,7 @@ public class Main {
         overlap[3] = 1;
         overlap[4] = 2;
 
+        //bottom-up 방식으로 문제 해결
         for(int index = 5; index <= n; index++){
             //2나 3으로 나누어지지 않는 경우
             if(index % 2 != 0 || index % 3 != 0) {
