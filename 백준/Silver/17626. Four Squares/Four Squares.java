@@ -7,7 +7,7 @@ public class Main{
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
         int n = Integer.parseInt(br.readLine());
-
+        //dp를 이용해 풀기 위한 배열
         int[] arr = new int[n + 3];
 
         arr[1] = 1;
@@ -21,13 +21,18 @@ public class Main{
                 arr[i] = 1;
                 continue;
             }
-            //
+            //점화식은 dp[i] = dp[i -j*j] + dp[j*j]
+            //이때, dp[j*j]는 1 고정 값이기 때문에 +1
+            //아래는 이해를 돕기 위한 예시
+            //dp[5] = dp[2*2] + dp[1]
+            //dp[6] = dp[2*2] + dp[2]
+            //dp[7] = dp[2*2] + dp[3]
             for(int j = (int)Math.sqrt(i); j > 0; j--){
                 min = Math.min(arr[i - j*j] + 1, min);
             }
             arr[i] = min;
         }
-
+    
 
         bw.write(String.valueOf(arr[n]));
 
