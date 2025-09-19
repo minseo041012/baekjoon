@@ -8,7 +8,7 @@ public class Main{
 
         int department = Integer.parseInt(br.readLine());
         int[] sum = new int[department];
-        int result = 0;
+        long result = 0;
 
         for(int i = 0; i < department; i++){
             StringTokenizer st = new StringTokenizer(br.readLine());
@@ -18,7 +18,7 @@ public class Main{
         }
         Arrays.sort(sum);
 
-        int temp = 0;
+        long temp = 0;
         for(int i = 0; i < department; i++){
             temp += sum[i];
             result += temp;
