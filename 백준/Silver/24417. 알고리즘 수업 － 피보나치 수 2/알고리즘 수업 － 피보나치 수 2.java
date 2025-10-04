@@ -11,6 +11,7 @@ public class Main{
         long n = Integer.parseInt(br.readLine());
 
         long count1 = fibo1(n);
+        
         //dp 방식은 배열 1, 2를 미리 선언해서 사용하기 때문에 n-2
         sb.append(count1 % mod).append(" ").append(n - 2);
         bw.write(String.valueOf(sb));
@@ -24,6 +25,8 @@ public class Main{
         int b = 1;//f(n-1)
         int c;//임시 저장용 변수
 
+        //dp 메모리 최적화 버전
+        //코드 실행 횟수는 f(N)과 같다  -> if(n==1 || n==2)가 실행되는 횟수가 f(n)번
         for(int i = 3; i <= n; i++){
             c = b;
             b = (a + b) % mod;
@@ -31,16 +34,4 @@ public class Main{
         }
         return b;
     }
-/*
-    static int fibo2(long n){
-        long[] arr = new long[(int)n + 1];
-
-        arr[1] = 1;
-        arr[2] = 1;
-        for(int i = 3; i <= n; i++){
-            arr[i] = arr[i - 1] + arr[i - 2];
-            count2++;
-        }
-        return count2;
-    }*/
 }
