@@ -2,8 +2,8 @@ import java.io.*;
 import java.util.*;
 
 public class Main{
-    static int[] f_num;
-    static int[] fruit;
+    static int[] f_num;//과일 번호 저장할 배열
+    static int[] fruit;//lis 저장할 배열
     static int n;
     static int max = 1;
     public static void main(String args[]) throws IOException{
@@ -31,9 +31,11 @@ public class Main{
     static void find_max(int f1, int f2){
         fruit = new int[n + 1];
         for(int i = 1; i <= n; i++){
+            //과일 번호가 같으면 lis 값 1씩 추가
             if(f_num[i] == f1 || f_num[i] == f2)
                 fruit[i] = fruit[i - 1] + 1;
         }
+        //최대 lis 값 찾아 max에 저장
         for(int i = 1; i <= n; i++)
             max = Math.max(max, fruit[i]);
     }
