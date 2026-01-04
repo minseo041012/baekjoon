@@ -12,18 +12,12 @@ public class Main{
         for(int ii = 0; ii < testcase; ii++){
             String s = br.readLine();
             int len = (int)Math.sqrt(s.length());
-            String[][] arr = new String[len][len];
-            int count = 0;
 
-            for(int i = 0; i < len; i++){
-                for(int j = 0; j < len; j++) {
-                    arr[i][j] = s.substring(count, count+1);
-                    count++;
-                }
-            }
+            //반시계 방향으로 문자 이동 시
+            //(i, j) -> (len - j, i)
             for(int i = 0; i < len; i++){
                 for(int j = 0; j < len; j++)
-                    sb.append(arr[j][len - i - 1]);
+                    sb.append(s.charAt(j * len + (len-i-1)));
             }
             sb.append("\n");
         }
