@@ -10,19 +10,29 @@ public class Main{
         int count = 0;//그룹 단어 개수 체크
 
         for(int i = 0; i < n; i++){
-            HashSet<String> set = new HashSet<>();//이미 나온 문자인지 아닌지 체크
-            String[] arr = br.readLine().split("");
-            for(int j = 0; j < arr.length; j++){
-                int size = set.size();
-                set.add(arr[j]);
-                //사이즈 비교하면서 연속해서 나오는지 아닌지 확인
-                if(set.size() == size && j != 0 && !arr[j - 1].equals(arr[j])) {
-                    set.clear();//그룹 단어가 아니라면 비워주기
-                    break;
+            boolean[] alpha = new boolean[26];//알파벳 나온지 안나온지 확인 -> 나온거면 true로 변경
+            String arr = br.readLine();
+            int pre = 0;//이전 문자 비교
+            boolean flag = true;//중간 break되었는지 판별
+
+            for(int j = 0; j < arr.length(); j++){
+                int now = arr.charAt(j);
+
+                //이전 문자와 현재 문자가 같지않고
+                if(pre != now){
+                    //이 문자가 처음 나왔을 경우
+                    if(alpha[now - 'a'] == false){
+                        alpha[now-'a']=true;
+                        pre = now;
+                    }
+                    //이전에 한 번 등장했을 경우
+                    else{
+                        flag = false;
+                        break;
+                    }
                 }
             }
-            //empty가 아니라면 count 증가
-            if(!set.isEmpty())
+            if(flag)
                 count++;
         }
 
@@ -31,4 +41,6 @@ public class Main{
         bw.close();
         br.close();
     }
+
+
 }
